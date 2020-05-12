@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import tasklists.controllers.TaskListController;
+import tasklists.controllers.TaskListControllerClass;
 import tasklists.models.Task;
 import tasklists.models.TaskList;
 
 public class CLI {
 	public static void main(String[] args) {
 		String taskListId, name, taskId, status, taskDescription;
-		TaskListController controller = null;
+		TaskListController controller = new TaskListControllerClass();
 		Scanner scanner = new Scanner(System.in);
 		
 		while(scanner.hasNextLine()) {
