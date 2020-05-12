@@ -3,7 +3,6 @@ package tasklists.controllers;
 import java.util.List;
 
 import tasklists.models.TaskList;
-import tasklists.models.Task;
 
 public interface TaskListController {
 
@@ -18,9 +17,14 @@ public interface TaskListController {
 	TaskList getTaskList(String name);
 
 	void changeTaskListName(String name, String newName);
+	
+	void changeTaskStatus(String taskListId, String taskId, String status);
+  
+	void deleteTask(String taskListId, String taskId);
+
+	boolean hasTask(String taskListId, String taskId);
 
 	Task getTask(String id);
 
 	boolean hasTask(String id);
-
 }
