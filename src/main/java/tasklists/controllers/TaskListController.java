@@ -28,6 +28,8 @@ public interface TaskListController {
 	boolean hasTaskInList(String taskListId, String taskId);
 
 	void changeTaskDescription(String taskId, String taskDescription);
+  
+  void changeTaskStatus(String taskListId, String taskId, String status);
 
 	Task getTask(String id);
 
