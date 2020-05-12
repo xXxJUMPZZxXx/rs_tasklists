@@ -9,7 +9,7 @@ import tasklists.models.TaskList;
 
 public class CLI {
 	public static void main(String[] args) {
-		String taskListId, name, taskId, status;
+		String taskListId, name, taskId, status, taskDescription;
 		TaskListController controller = null;
 		Scanner scanner = new Scanner(System.in);
 		
@@ -84,7 +84,7 @@ public class CLI {
 			break;
 			//altera o estado da tarefa.
 			case "MT":
-				taskListId = command[1];
+       	taskListId = command[1];
 				taskId = command[2];
 				status = command[3];
 				if(controller != null && !controller.hasTaskList(taskListId)){
@@ -100,6 +100,21 @@ public class CLI {
 			break;
 			//altera a descrição da tarefa.
 			case "AT":
+				taskListId = command[1];
+				if(!controller.hasTaskList(taskListId)) {
+					System.out.println("Task lisk does not exist.");
+				}
+				else {
+					taskId = command[2];
+					if(!controller.hasTaskInList(taskListId, taskId)) {
+						System.out.println("Task does not exist in List.");
+					}
+					else {
+						taskDescription = command[3];
+						controller.changeTaskDescription(taskId, taskDescription);
+						System.out.println("Task " + taskId + " description changed.");
+					}
+				}
 			break;
 			//elimina a tarefa.case "":
 			case "DT":
