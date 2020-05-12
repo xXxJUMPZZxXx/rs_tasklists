@@ -96,8 +96,13 @@ public class CLI {
 				if(!controller.hasTaskList(taskListId)) {
 					System.out.println("Task list does not exist.");
 				} else {
-					controller.deleteTask(taskListId, taskId);
-					System.out.println("Task list deleted successfully");
+					if(!controller.hasTask(taskListId, taskId)) {
+						System.out.println("Task does not exist.");
+					}
+					else {
+						controller.deleteTask(taskListId, taskId);
+						System.out.println("Task list deleted successfully");
+					}
 				}
 			break;
 			default:

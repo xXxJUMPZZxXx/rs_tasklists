@@ -20,4 +20,6 @@ public interface TaskListController {
 	
 	void deleteTask(String taskListId, String taskId);
 
+	boolean hasTask(String taskListId, String taskId);
+
 }
