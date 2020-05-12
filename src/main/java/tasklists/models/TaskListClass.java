@@ -1,5 +1,6 @@
 package tasklists.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,13 +23,19 @@ public class TaskListClass implements TaskList {
 	@ElementCollection
 	@OneToMany(
 		    orphanRemoval = true,
-		    cascade = CascadeType.ALL)
+		    cascade = CascadeType.ALL,
+		    targetEntity = TaskClass.class)
 	private List<Task> tasks;
 	
 	public TaskListClass() {
 		super();
 	}
 	
+	public TaskListClass(String name) {
+		this.name = name;
+		this.tasks = new ArrayList<Task>();
+	}
+
 	public int getId() {
 		return id;
 	}

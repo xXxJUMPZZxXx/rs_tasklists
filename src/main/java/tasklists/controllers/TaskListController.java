@@ -34,5 +34,7 @@ public interface TaskListController {
 	Task getTask(String taskListId, String taskId);
 
 	void deleteTaskList(String Id);
+	
+	void close();
 
 }

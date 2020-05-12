@@ -2,12 +2,32 @@ package tasklists.controllers;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 import tasklists.models.Task;
 import tasklists.models.TaskList;
+import tasklists.models.TaskListClass;
 
 public class TaskListControllerClass implements TaskListController {
+	private SessionFactory sessionFactory;
 	
-	private static List<TaskList> readTaskLists() {
+	public TaskListControllerClass() {
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+				.configure("resource/hibernate.cfg.xml")
+				.build();
+        try {
+        	this.sessionFactory  = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch(Exception e) {
+        	e.printStackTrace();
+        	System.exit(1);
+        }
+	}
+	
+	private List<TaskList> readTaskLists() {
 		// TODO
 		// Open Hibernate connection
 		// Build all TaskList objects
@@ -15,7 +35,7 @@ public class TaskListControllerClass implements TaskListController {
 		return null;
 	}
 	
-	private static TaskList readTaskList(String taskListId) {
+	private TaskList readTaskList(String taskListId) {
 		// TODO
 		// Open Hibernate connection
 		// Build TaskList object
@@ -23,92 +43,88 @@ public class TaskListControllerClass implements TaskListController {
 		return null;
 	}
 	
-	private static void writeTaskList(TaskList taskList) {
-		// TODO
-		// Open Hibernate connection
-		// Save TaskList object
-		// Close connection
+	public void writeTaskList(TaskList taskList) {
+		// TODO: change object id
+        Session session = sessionFactory.openSession();
+		// Open Hibernate session
+        session.beginTransaction();
+        // Save TaskList object
+        session.save(taskList);
+        session.getTransaction().commit();
+        // Close session
+        session.close();
 	}
-
-	@Override
+	
+	public void close() {
+		sessionFactory.close();
+	}
+	
 	public List<TaskList> getTaskLists() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean hasTasksLists() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean hasTaskList(String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public String createTaskList(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		TaskList taskList = new TaskListClass(name);
+		this.writeTaskList(taskList);
+		return ""+taskList.getId();
 	}
 
-	@Override
 	public TaskList getTaskList(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	
 	public void changeTaskListName(String name, String newName) {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
+	
 	public void deleteTask(String taskListId, String taskId) {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
+	
 	public boolean hasTask(String taskListId, String taskId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean hasTaskInList(String taskListId, String taskId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void changeTaskDescription(String taskId, String taskDescription) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void changeTaskStatus(String taskListId, String taskId, String status) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public String createTask(String taskListId, String description) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Task getTask(String taskListId, String taskId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void deleteTaskList(String Id) {
 		// TODO Auto-generated method stub
 

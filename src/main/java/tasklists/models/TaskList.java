@@ -7,5 +7,7 @@ public interface TaskList {
 	String getName();
 
 	List<Task> getTasks();
+	
+	int getId();
 
 }

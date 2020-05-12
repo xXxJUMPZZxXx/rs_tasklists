@@ -19,6 +19,7 @@ public class CLI {
 			
 			if(line.isEmpty()) {
 				// Exit on black line
+				controller.close();
 				System.exit(0);
 			}
 			
