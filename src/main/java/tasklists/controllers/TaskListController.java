@@ -26,4 +26,6 @@ public interface TaskListController {
 
 	void changeTaskDescription(String taskId, String taskDescription);
 
+	void changeTaskStatus(String taskListId, String taskId, String status);
+
 }
