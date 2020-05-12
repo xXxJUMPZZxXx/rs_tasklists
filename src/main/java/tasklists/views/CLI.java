@@ -16,7 +16,7 @@ public class CLI {
 		while(scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			
-			if(line.isBlank()) {
+			if(line.isEmpty()) {
 				// Exit on black line
 				System.exit(0);
 			}
@@ -103,6 +103,20 @@ public class CLI {
 			break;
 			//elimina a tarefa.case "":
 			case "DT":
+				taskListId = command[1];
+				taskId = command[2];
+				
+				if(!controller.hasTaskList(taskListId)) {
+					System.out.println("Task list does not exist.");
+				} else {
+					if(!controller.hasTask(taskListId, taskId)) {
+						System.out.println("Task does not exist.");
+					}
+					else {
+						controller.deleteTask(taskListId, taskId);
+						System.out.println("Task list deleted successfully");
+					}
+				}
 			break;
 			default:
 
