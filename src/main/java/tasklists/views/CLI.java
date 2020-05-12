@@ -75,6 +75,15 @@ public class CLI {
 			break;
 			//adiciona uma tarefa à lista.
 			case "CT":
+				taskListId = command[1];
+				String description = command[2];
+				if(!controller.hasTaskList(taskListId)) {
+					System.out.println("Task lisk does not exist.");
+				}
+				else {
+					taskId = controller.createTask(taskListId, description);
+					System.out.println("Task " + taskId + " added to task list " + taskListId);
+				}
 			break;
 			//elemina a lista, e as suas tarefas.
 			case "DTL":
