@@ -81,6 +81,14 @@ public class CLI {
 			break;
 			//obtém uma tarefa.
 			case "ST":
+				taskId = command[1];
+				if(!controller.hasTask(taskId)) {
+					System.out.println("Task does not exist.");
+				}
+				else {
+					Task task = controller.getTask(taskId);
+					System.out.println(task.getDescription());
+				}
 			break;
 			//altera o estado da tarefa.
 			case "MT":
