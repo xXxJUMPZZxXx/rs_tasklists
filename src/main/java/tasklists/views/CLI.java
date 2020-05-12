@@ -9,7 +9,7 @@ import tasklists.models.TaskList;
 
 public class CLI {
 	public static void main(String[] args) {
-		String taskId, taskListId, name;
+		String taskListId, name, taskId;
 		TaskListController controller = null;
 		Scanner scanner = new Scanner(System.in);
 		
