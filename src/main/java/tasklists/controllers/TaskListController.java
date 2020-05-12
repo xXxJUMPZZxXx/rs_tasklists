@@ -17,6 +17,10 @@ public interface TaskListController {
 	TaskList getTaskList(String name);
 
 	void changeTaskListName(String name, String newName);
+	
+	void deleteTask(String taskListId, String taskId);
+
+	boolean hasTask(String taskListId, String taskId);
 
 	boolean hasTaskInList(String taskListId, String taskId);
 
