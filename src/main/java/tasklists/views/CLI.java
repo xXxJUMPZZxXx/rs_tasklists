@@ -87,15 +87,24 @@ public class CLI {
 			break;
 			//elemina a lista, e as suas tarefas.
 			case "DTL":
+				taskListId = command[1];
+
+                if(!controller.hasTaskList(taskListId)) {
+                    System.out.println("Task list does not exist.");
+                } else {
+                    controller.deleteTaskList(taskListId);
+                    System.out.println("Task list deleted successfully");
+                }
 			break;
 			//obtém uma tarefa.
 			case "ST":
-				taskId = command[1];
-				if(!controller.hasTask(taskId)) {
+				taskListId = command[1];
+				taskId = command[2];
+				if(!controller.hasTask(taskListId, taskId)) {
 					System.out.println("Task does not exist.");
 				}
 				else {
-					Task task = controller.getTask(taskId);
+					Task task = controller.getTask(taskListId, taskId);
 					System.out.println(task.getDescription());
 				}
 			break;
@@ -151,7 +160,7 @@ public class CLI {
 				}
 			break;
 			default:
-
+				System.out.println("Invalid instruction.");
 			}
 		}
 	}

@@ -31,8 +31,8 @@ public interface TaskListController {
 
 	String createTask(String taskListId, String description);
 	
-	Task getTask(String id);
+	Task getTask(String taskListId, String taskId);
 
-	boolean hasTask(String id);
+	void deleteTaskList(String Id);
 
 }
