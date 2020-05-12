@@ -9,7 +9,7 @@ import tasklists.models.TaskList;
 
 public class CLI {
 	public static void main(String[] args) {
-		String taskListId, name;
+		String taskListId, name, taskId;
 		TaskListController controller = null;
 		Scanner scanner = new Scanner(System.in);
 		
@@ -90,6 +90,15 @@ public class CLI {
 			break;
 			//elimina a tarefa.case "":
 			case "DT":
+				taskListId = command[1];
+				taskId = command[2];
+				
+				if(!controller.hasTaskList(taskListId)) {
+					System.out.println("Task list does not exist.");
+				} else {
+					controller.deleteTask(taskListId, taskId);
+					System.out.println("Task list deleted successfully");
+				}
 			break;
 			default:
 
