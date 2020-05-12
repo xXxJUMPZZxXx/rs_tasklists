@@ -18,4 +18,8 @@ public interface TaskListController {
 
 	void changeTaskListName(String name, String newName);
 
+	boolean hasTaskInList(String taskListId, String taskId);
+
+	void changeTaskDescription(String taskId, String taskDescription);
+
 }
