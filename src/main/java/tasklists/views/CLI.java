@@ -16,7 +16,7 @@ public class CLI {
 		while(scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			
-			if(line.isBlank()) {
+			if(line.isEmpty()) {
 				// Exit on black line
 				System.exit(0);
 			}
