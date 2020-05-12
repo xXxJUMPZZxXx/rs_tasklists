@@ -78,6 +78,18 @@ public class CLI {
 			break;
 			//elemina a lista, e as suas tarefas.
 			case "DTL":
+				taskListId = command[1];
+
+                if(!controller.hasTaskList(taskListId)) {
+                    System.out.println("Task list does not exist.");
+                } else {
+                    boolean opResult = controller.deleteTaskList(taskListId);
+                    if(opResult) {
+                    	System.out.println("Task list deleted successfully");
+                    } else {
+                    	System.out.println("There was a problem deleting the list");
+                    }
+                }
 			break;
 			//obtém uma tarefa.
 			case "ST":

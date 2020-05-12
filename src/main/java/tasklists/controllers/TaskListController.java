@@ -17,5 +17,7 @@ public interface TaskListController {
 	TaskList getTaskList(String name);
 
 	void changeTaskListName(String name, String newName);
+	
+	boolean deleteTaskList(String Id);
 
 }
