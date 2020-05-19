@@ -42,10 +42,10 @@
 			<version>5.0.5.Final</version>
 		</dependency>
 		<dependency>
-    <groupId>javax.json</groupId>
-    <artifactId>javax.json-api</artifactId>
-    <version>1.0</version>
-</dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>jakarta.enterprise</groupId>
 			<artifactId>jakarta.enterprise.cdi-api</artifactId>

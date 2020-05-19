@@ -100,11 +100,6 @@ public class TaskListControllerClass implements TaskListController {
 		return false;
 	}
 
-	public boolean hasTaskInList(String taskListId, String taskId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public void changeTaskDescription(String taskId, String taskDescription) {
 		// TODO Auto-generated method stub
 

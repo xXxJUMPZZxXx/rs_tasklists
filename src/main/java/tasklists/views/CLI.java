@@ -134,7 +134,7 @@ public class CLI {
 				}
 				else {
 					taskId = command[2];
-					if(!controller.hasTaskInList(taskListId, taskId)) {
+					if(!controller.hasTask(taskListId, taskId)) {
 						System.out.println("Task does not exist in List.");
 					}
 					else {
